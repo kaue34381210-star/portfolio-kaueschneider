@@ -3,25 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kauê Schneider | Analista Fiscal + Tech</title>
-  <meta name="description" content="Analista Fiscal especializado em tecnologia. SQL • Automação • Dados • Desenvolvimento Web aplicado à área fiscal." />
+  <title>Kauê Schneider | Analista Fiscal + Tech Innovator</title>
+  <meta name="description" content="Analista Fiscal especializado em tecnologia com formação completa em Data Science, Cyber Security, Web Dev e mais." />
+  
+  <!-- Framework AOS para animações -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   
   <!-- Fonts & Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  
+  <!-- Particles.js -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   
   <style>
     :root {
-      --bg: #0a0a0a;
-      --surface: #1a1a1a;
-      --surface-light: #262626;
-      --primary: #2563eb;
-      --primary-light: #3b82f6;
-      --accent: #7c3aed;
-      --text: #f5f5f5;
-      --text-muted: #a3a3a3;
-      --border: #333333;
-      --success: #10b981;
+      --primary: #00d9ff;
+      --primary-dark: #00a8cc;
+      --secondary: #ff00ff;
+      --secondary-dark: #cc00cc;
+      --accent: #00ff88;
+      --accent-dark: #00cc6a;
+      --bg: #0a0a0f;
+      --surface: #111122;
+      --surface-light: #1a1a33;
+      --text: #ffffff;
+      --text-muted: #a0a0c0;
+      --border: rgba(0, 217, 255, 0.2);
+      --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+      --neon-glow: 0 0 20px var(--primary), 0 0 40px var(--primary), 0 0 60px var(--primary);
     }
 
     * {
@@ -32,76 +42,87 @@
 
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 80px;
+      scroll-padding-top: 100px;
     }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Space Grotesk', sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
       overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 20% 80%, rgba(0, 217, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 0, 255, 0.1) 0%, transparent 50%);
     }
 
-    /* NAVIGATION */
+    /* Partículas */
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    /* NAVIGATION - CYBERPUNK */
     .navbar {
       position: fixed;
       top: 0;
       width: 100%;
       padding: 1.5rem 5%;
-      background: rgba(10, 10, 10, 0.95);
-      backdrop-filter: blur(10px);
+      background: rgba(10, 10, 15, 0.9);
+      backdrop-filter: blur(15px);
       z-index: 1000;
       display: flex;
       justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid var(--border);
+      box-shadow: 0 5px 30px rgba(0, 217, 255, 0.1);
     }
 
     .logo {
-      font-size: 1.5rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.8rem;
       font-weight: 800;
-      color: var(--text);
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       display: flex;
       align-items: center;
       gap: 0.75rem;
+      animation: glitch 3s infinite;
     }
 
-    .logo-dot {
-      width: 8px;
-      height: 8px;
-      background: var(--primary);
-      border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; }
+    @keyframes glitch {
+      0%, 100% { transform: translate(0); }
+      1% { transform: translate(-2px, 2px); }
+      2% { transform: translate(-2px, -2px); }
+      3% { transform: translate(2px, 2px); }
+      4% { transform: translate(2px, -2px); }
+      5% { transform: translate(0); }
     }
 
     .nav-links {
       display: flex;
-      gap: 2rem;
+      gap: 2.5rem;
     }
 
     .nav-links a {
-      color: var(--text-muted);
+      color: var(--text);
       text-decoration: none;
       font-weight: 500;
-      font-size: 0.95rem;
-      transition: color 0.3s ease;
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
       position: relative;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
-    .nav-links a:hover {
-      color: var(--text);
-    }
-
-    .nav-links a::after {
+    .nav-links a::before {
       content: '';
       position: absolute;
-      bottom: -5px;
+      bottom: 0;
       left: 0;
       width: 0;
       height: 2px;
@@ -109,11 +130,15 @@
       transition: width 0.3s ease;
     }
 
-    .nav-links a:hover::after {
+    .nav-links a:hover::before {
       width: 100%;
     }
 
-    /* HERO SECTION */
+    .nav-links a:hover {
+      text-shadow: 0 0 10px var(--primary);
+    }
+
+    /* HERO SECTION - FULL ANIMATION */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -123,16 +148,6 @@
       overflow: hidden;
     }
 
-    .hero-bg {
-      position: absolute;
-      top: 50%;
-      right: 10%;
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
-      transform: translateY(-50%);
-    }
-
     .hero-content {
       max-width: 800px;
       position: relative;
@@ -140,431 +155,583 @@
     }
 
     .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: rgba(37, 99, 235, 0.1);
+      display: inline-block;
+      background: rgba(0, 217, 255, 0.1);
       color: var(--primary);
-      padding: 0.5rem 1.25rem;
-      border-radius: 2rem;
-      font-size: 0.875rem;
-      font-weight: 500;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 600;
       margin-bottom: 2rem;
-      border: 1px solid rgba(37, 99, 235, 0.2);
+      border: 1px solid rgba(0, 217, 255, 0.3);
+      animation: pulse 2s infinite;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 10px rgba(0, 217, 255, 0.5); }
+      50% { box-shadow: 0 0 20px rgba(0, 217, 255, 0.8); }
     }
 
     .hero-title {
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 800;
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(3rem, 6vw, 5rem);
+      font-weight: 900;
       line-height: 1.1;
       margin-bottom: 1.5rem;
+      background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: textGlow 3s ease-in-out infinite alternate;
     }
 
-    .hero-title span {
-      color: var(--primary);
+    @keyframes textGlow {
+      0% { filter: drop-shadow(0 0 10px rgba(0, 217, 255, 0.5)); }
+      100% { filter: drop-shadow(0 0 20px rgba(255, 0, 255, 0.5)); }
     }
 
     .hero-subtitle {
-      font-size: 1.25rem;
+      font-size: 1.3rem;
       color: var(--text-muted);
-      margin-bottom: 2.5rem;
+      margin-bottom: 3rem;
       max-width: 600px;
+      line-height: 1.8;
     }
 
     .cta-buttons {
       display: flex;
-      gap: 1rem;
+      gap: 1.5rem;
       flex-wrap: wrap;
     }
 
     .btn {
-      padding: 1rem 2rem;
-      border-radius: 0.75rem;
-      font-weight: 600;
-      font-size: 1rem;
-      transition: all 0.3s ease;
+      padding: 1.2rem 2.5rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
       cursor: pointer;
       border: none;
       display: inline-flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 1rem;
+      position: relative;
+      overflow: hidden;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: 0.5s;
+    }
+
+    .btn:hover::before {
+      left: 100%;
     }
 
     .btn-primary {
-      background: var(--primary);
+      background: var(--gradient);
       color: white;
+      box-shadow: 0 10px 30px rgba(0, 217, 255, 0.3);
     }
 
     .btn-primary:hover {
-      background: var(--primary-light);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 15px 40px rgba(0, 217, 255, 0.5);
     }
 
     .btn-outline {
       background: transparent;
       color: var(--text);
-      border: 1px solid var(--border);
+      border: 2px solid var(--primary);
+      box-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
     }
 
     .btn-outline:hover {
-      border-color: var(--primary);
-      transform: translateY(-2px);
+      background: rgba(0, 217, 255, 0.1);
+      transform: translateY(-5px);
+      box-shadow: var(--neon-glow);
     }
 
-    /* VALUE CARDS */
+    /* VALUE CARDS - 3D EFFECT */
     .value-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-top: 4rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+      margin-top: 5rem;
     }
 
     .value-card {
-      background: var(--surface);
+      background: linear-gradient(145deg, var(--surface), var(--surface-light));
       border: 1px solid var(--border);
-      border-radius: 1rem;
-      padding: 2rem;
-      transition: all 0.3s ease;
+      border-radius: 20px;
+      padding: 2.5rem;
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      perspective: 1000px;
+    }
+
+    .value-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: var(--gradient);
     }
 
     .value-card:hover {
+      transform: translateY(-15px) rotateX(5deg);
+      box-shadow: 0 25px 50px rgba(0, 217, 255, 0.2);
       border-color: var(--primary);
-      transform: translateY(-5px);
     }
 
     .value-icon {
-      width: 3rem;
-      height: 3rem;
-      background: rgba(37, 99, 235, 0.1);
-      border-radius: 0.75rem;
+      width: 4rem;
+      height: 4rem;
+      background: var(--gradient);
+      border-radius: 15px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 1.5rem;
-      color: var(--primary);
-      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      color: white;
+      font-size: 1.8rem;
+      transform: rotate(45deg);
+      transition: transform 0.5s ease;
+    }
+
+    .value-card:hover .value-icon {
+      transform: rotate(0deg) scale(1.1);
     }
 
     /* SECTION STYLES */
     section {
-      padding: 6rem 5%;
+      padding: 8rem 5%;
+      position: relative;
     }
 
     .section-header {
       text-align: center;
-      margin-bottom: 4rem;
+      margin-bottom: 5rem;
     }
 
     .section-title {
-      font-size: 2.5rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 3.5rem;
       font-weight: 800;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: var(--gradient);
+      border-radius: 2px;
     }
 
     .section-subtitle {
       color: var(--text-muted);
-      font-size: 1.125rem;
-      max-width: 600px;
+      font-size: 1.2rem;
+      max-width: 700px;
       margin: 0 auto;
+      line-height: 1.8;
     }
 
-    /* ABOUT */
+    /* ABOUT - ANIMATED */
     .about-content {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 4rem;
+      gap: 5rem;
       align-items: center;
     }
 
     .about-text {
-      font-size: 1.125rem;
+      font-size: 1.2rem;
       line-height: 1.8;
     }
 
     .about-text p {
-      margin-bottom: 1.5rem;
-    }
-
-    .about-highlight {
-      background: var(--surface);
-      border-left: 4px solid var(--primary);
-      padding: 1.5rem;
-      border-radius: 0 0.5rem 0.5rem 0;
-      margin: 2rem 0;
-    }
-
-    /* SKILLS */
-    .skills-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-
-    .skill-category {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 1rem;
-      padding: 2rem;
-    }
-
-    .skill-category h3 {
-      font-size: 1.5rem;
       margin-bottom: 2rem;
-      color: var(--primary);
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .skill-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-    }
-
-    .skill-tag {
-      background: var(--surface-light);
-      color: var(--text);
-      padding: 0.5rem 1rem;
-      border-radius: 2rem;
-      font-size: 0.875rem;
-      font-weight: 500;
-      border: 1px solid var(--border);
-      transition: all 0.3s ease;
-    }
-
-    .skill-tag:hover {
-      border-color: var(--primary);
-      transform: translateY(-2px);
-    }
-
-    /* EXPERIENCE */
-    .experience-timeline {
       position: relative;
-      max-width: 800px;
-      margin: 0 auto;
+      padding-left: 2rem;
     }
 
-    .timeline-item {
-      display: flex;
-      gap: 2rem;
-      margin-bottom: 3rem;
-      position: relative;
-    }
-
-    .timeline-date {
-      min-width: 120px;
-      text-align: right;
-      color: var(--primary);
-      font-weight: 600;
-      font-size: 0.875rem;
-    }
-
-    .timeline-content {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 1rem;
-      padding: 2rem;
-      flex: 1;
-      position: relative;
-    }
-
-    .timeline-content::before {
-      content: '';
-      position: absolute;
-      left: -1rem;
-      top: 2rem;
-      width: 1rem;
-      height: 2px;
-      background: var(--border);
-    }
-
-    .company {
-      color: var(--primary);
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-
-    .responsibilities {
-      margin-top: 1rem;
-      list-style: none;
-    }
-
-    .responsibilities li {
-      margin-bottom: 0.5rem;
-      padding-left: 1.5rem;
-      position: relative;
-    }
-
-    .responsibilities li::before {
-      content: '→';
+    .about-text p::before {
+      content: '▸';
       position: absolute;
       left: 0;
       color: var(--primary);
     }
 
-    /* PROJECTS */
+    /* SKILLS - ANIMATED BARS */
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 3rem;
+    }
+
+    .skill-category {
+      background: linear-gradient(145deg, var(--surface), var(--surface-light));
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skill-category::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: var(--gradient);
+    }
+
+    .skill-category h3 {
+      font-size: 1.8rem;
+      margin-bottom: 2.5rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .skill-item {
+      margin-bottom: 2rem;
+    }
+
+    .skill-name {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .skill-bar {
+      height: 10px;
+      background: var(--surface-light);
+      border-radius: 5px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .skill-progress {
+      height: 100%;
+      background: var(--gradient);
+      border-radius: 5px;
+      width: 0;
+      animation: fillBar 2s ease forwards;
+      transform-origin: left;
+    }
+
+    @keyframes fillBar {
+      from { width: 0; }
+      to { width: var(--progress); }
+    }
+
+    /* CURSOS UDEMY - ANIMATED CARDS */
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+
+    .course-card {
+      background: linear-gradient(145deg, var(--surface), var(--surface-light));
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.5s ease;
+    }
+
+    .course-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 217, 255, 0.2);
+      border-color: var(--primary);
+    }
+
+    .course-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: var(--gradient);
+    }
+
+    .course-badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: var(--gradient);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    /* EXPERIENCE TIMELINE - ANIMATED */
+    .experience-timeline {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 3rem;
+      margin-bottom: 4rem;
+      position: relative;
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: all 0.8s ease;
+    }
+
+    .timeline-item.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .timeline-date {
+      min-width: 150px;
+      text-align: right;
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .timeline-content {
+      background: linear-gradient(145deg, var(--surface), var(--surface-light));
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.5rem;
+      flex: 1;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .timeline-content:hover {
+      border-color: var(--primary);
+      box-shadow: 0 15px 30px rgba(0, 217, 255, 0.1);
+    }
+
+    .timeline-content::before {
+      content: '';
+      position: absolute;
+      left: -20px;
+      top: 30px;
+      width: 20px;
+      height: 20px;
+      background: var(--gradient);
+      border-radius: 50%;
+      box-shadow: 0 0 20px var(--primary);
+    }
+
+    /* PROJECTS - 3D FLIP */
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 3rem;
     }
 
     .project-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 1rem;
+      height: 400px;
+      perspective: 1500px;
+    }
+
+    .project-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transform-style: preserve-3d;
+      border-radius: 20px;
+    }
+
+    .project-card:hover .project-inner {
+      transform: rotateY(180deg);
+    }
+
+    .project-front, .project-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 20px;
       overflow: hidden;
-      transition: all 0.3s ease;
     }
 
-    .project-card:hover {
-      border-color: var(--primary);
-      transform: translateY(-5px);
-    }
-
-    .project-header {
-      padding: 2rem;
-      background: var(--surface-light);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .project-content {
-      padding: 2rem;
-    }
-
-    .project-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 1.5rem;
-    }
-
-    .tag {
-      background: rgba(37, 99, 235, 0.1);
-      color: var(--primary);
-      padding: 0.375rem 0.875rem;
-      border-radius: 2rem;
-      font-size: 0.75rem;
-      font-weight: 500;
-      border: 1px solid rgba(37, 99, 235, 0.2);
-    }
-
-    /* EDUCATION */
-    .education-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-
-    .education-card {
-      background: var(--surface);
+    .project-front {
+      background: linear-gradient(145deg, var(--surface), var(--surface-light));
       border: 1px solid var(--border);
-      border-radius: 1rem;
-      padding: 2rem;
-      text-align: center;
-      transition: all 0.3s ease;
-    }
-
-    .education-card:hover {
-      border-color: var(--primary);
-    }
-
-    .education-icon {
-      width: 4rem;
-      height: 4rem;
-      background: rgba(37, 99, 235, 0.1);
-      border-radius: 1rem;
+      padding: 3rem;
       display: flex;
-      align-items: center;
+      flex-direction: column;
       justify-content: center;
-      margin: 0 auto 1.5rem;
-      color: var(--primary);
-      font-size: 2rem;
     }
 
-    /* CONTACT */
+    .project-back {
+      background: linear-gradient(145deg, var(--surface-light), var(--surface));
+      border: 1px solid var(--primary);
+      padding: 3rem;
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* CONTACT - ANIMATED */
     .contact-container {
-      max-width: 800px;
+      max-width: 1000px;
       margin: 0 auto;
     }
 
     .contact-info {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-bottom: 4rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 3rem;
+      margin-bottom: 5rem;
     }
 
     .contact-item {
-      background: var(--surface);
+      background: linear-gradient(145deg, var(--surface), var(--surface-light));
       border: 1px solid var(--border);
-      border-radius: 1rem;
-      padding: 2rem;
+      border-radius: 20px;
+      padding: 2.5rem;
       text-align: center;
-      transition: all 0.3s ease;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
     }
 
     .contact-item:hover {
+      transform: translateY(-10px);
       border-color: var(--primary);
+      box-shadow: 0 20px 40px rgba(0, 217, 255, 0.2);
     }
 
     .contact-icon {
-      width: 3rem;
-      height: 3rem;
-      background: rgba(37, 99, 235, 0.1);
+      width: 4rem;
+      height: 4rem;
+      background: var(--gradient);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 1rem;
-      color: var(--primary);
-      font-size: 1.5rem;
+      margin: 0 auto 1.5rem;
+      color: white;
+      font-size: 1.8rem;
+      transition: transform 0.3s ease;
     }
 
-    /* FOOTER */
+    .contact-item:hover .contact-icon {
+      transform: scale(1.1) rotate(360deg);
+    }
+
+    /* FOOTER - GLOWING */
     footer {
-      padding: 4rem 5%;
+      padding: 5rem 5%;
       border-top: 1px solid var(--border);
       text-align: center;
       background: var(--surface);
+      position: relative;
+      overflow: hidden;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: var(--gradient);
     }
 
     .footer-tagline {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin-bottom: 2rem;
-      color: var(--primary);
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 3rem;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: textGlow 3s ease-in-out infinite alternate;
     }
 
     .social-links {
       display: flex;
       justify-content: center;
-      gap: 1rem;
-      margin: 2rem 0;
+      gap: 1.5rem;
+      margin: 3rem 0;
     }
 
     .social-link {
-      width: 2.5rem;
-      height: 2.5rem;
-      background: var(--surface-light);
+      width: 3.5rem;
+      height: 3.5rem;
+      background: linear-gradient(145deg, var(--surface-light), var(--surface));
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--text);
-      font-size: 1.125rem;
-      transition: all 0.3s ease;
+      font-size: 1.5rem;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      border: 1px solid var(--border);
     }
 
     .social-link:hover {
-      background: var(--primary);
+      background: var(--gradient);
       color: white;
-      transform: translateY(-3px);
+      transform: translateY(-10px) scale(1.1);
+      box-shadow: var(--neon-glow);
     }
 
     /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .hero-title {
+        font-size: 3.5rem;
+      }
+      
+      .section-title {
+        font-size: 3rem;
+      }
+      
+      .about-content {
+        gap: 3rem;
+      }
+    }
+
     @media (max-width: 768px) {
       .navbar {
         padding: 1rem 5%;
@@ -575,22 +742,18 @@
       }
       
       .hero {
-        padding-top: 6rem;
+        padding-top: 8rem;
         text-align: center;
-      }
-      
-      .hero-bg {
-        display: none;
       }
       
       .about-content {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 3rem;
       }
       
       .timeline-item {
         flex-direction: column;
-        gap: 1rem;
+        gap: 1.5rem;
       }
       
       .timeline-date {
@@ -602,99 +765,123 @@
       }
       
       section {
-        padding: 4rem 5%;
+        padding: 6rem 5%;
       }
       
-      .cta-buttons {
-        justify-content: center;
+      .btn {
+        padding: 1rem 2rem;
       }
     }
 
     @media (max-width: 480px) {
       .hero-title {
-        font-size: 2rem;
+        font-size: 2.5rem;
       }
       
       .section-title {
-        font-size: 2rem;
+        font-size: 2.5rem;
       }
       
-      .btn {
-        width: 100%;
-        justify-content: center;
+      .value-card,
+      .skill-category,
+      .course-card,
+      .contact-item {
+        padding: 2rem;
       }
+    }
+
+    /* CUSTOM SCROLLBAR */
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--surface);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--gradient);
+      border-radius: 6px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--primary);
     }
   </style>
 </head>
 <body>
 
+  <!-- Partículas background -->
+  <div id="particles-js"></div>
+
   <!-- NAVIGATION -->
-  <nav class="navbar">
+  <nav class="navbar" data-aos="fade-down" data-aos-duration="1000">
     <div class="logo">
-      <div class="logo-dot"></div>
-      Kauê Schneider
+      <i class="ri-terminal-box-fill"></i>
+      KAUÊ SCHNEIDER
     </div>
     <div class="nav-links">
-      <a href="#home">Início</a>
-      <a href="#sobre">Sobre</a>
-      <a href="#habilidades">Habilidades</a>
-      <a href="#experiencia">Experiência</a>
-      <a href="#projetos">Projetos</a>
-      <a href="#contato">Contato</a>
+      <a href="#home">INÍCIO</a>
+      <a href="#sobre">SOBRE</a>
+      <a href="#cursos">CURSOS</a>
+      <a href="#habilidades">SKILLS</a>
+      <a href="#projetos">PROJETOS</a>
+      <a href="#contato">CONTATO</a>
     </div>
   </nav>
 
   <!-- HERO SECTION -->
   <section id="home" class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-content">
+    <div class="hero-content" data-aos="fade-up" data-aos-duration="1500">
       <div class="hero-badge">
-        <i class="ri-briefcase-line"></i>
-        <span>Analista Fiscal + Desenvolvedor</span>
+        <i class="ri-code-s-slash-line"></i>
+        <span>CYBER-FISCAL DEVELOPER</span>
       </div>
       
       <h1 class="hero-title">
-        Transformo processos fiscais com <span>tecnologia</span>
+        <span class="text-gradient">FISCAL TECH</span><br>
+        <span class="text-gradient">INNOVATOR</span>
       </h1>
       
-      <p class="hero-subtitle">
-        Combino expertise em rotinas fiscais com habilidades técnicas em desenvolvimento web, 
-        SQL e automação para criar soluções eficientes que reduzem erros e otimizam resultados.
+      <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
+        Analista Fiscal com especialização em Data Science, Cyber Security, 
+        Web Development e automação de processos. Transformando a burocracia 
+        fiscal em soluções tecnológicas de alta performance.
       </p>
       
-      <div class="cta-buttons">
+      <div class="cta-buttons" data-aos="fade-up" data-aos-delay="400">
         <a href="#contato" class="btn btn-primary">
-          <i class="ri-mail-line"></i> Entrar em Contato
+          <i class="ri-rocket-line"></i> CONTRATAR AGORA
         </a>
         <a href="#projetos" class="btn btn-outline">
-          <i class="ri-code-s-slash-line"></i> Ver Projetos
+          <i class="ri-eye-line"></i> VER DEMOS
         </a>
       </div>
       
       <!-- Value Proposition -->
       <div class="value-grid">
-        <div class="value-card">
+        <div class="value-card" data-aos="zoom-in" data-aos-delay="600">
           <div class="value-icon">
-            <i class="ri-scales-line"></i>
+            <i class="ri-database-2-line"></i>
           </div>
-          <h3>Expertise Fiscal</h3>
-          <p>Experiência prática em processos administrativos e resolução de problemas na área fiscal.</p>
+          <h3>DATA SCIENCE</h3>
+          <p>Formação completa em Ciência de Dados com foco em análise fiscal preditiva e dashboarding avançado.</p>
         </div>
         
-        <div class="value-card">
+        <div class="value-card" data-aos="zoom-in" data-aos-delay="800">
           <div class="value-icon">
-            <i class="ri-code-box-line"></i>
+            <i class="ri-shield-keyhole-line"></i>
           </div>
-          <h3>Skills Técnicas</h3>
-          <p>Desenvolvimento web, SQL, automação e análise de dados aplicados ao contexto fiscal.</p>
+          <h3>CYBER SECURITY</h3>
+          <p>Especialista em segurança de dados fiscais, compliance digital e proteção de informações sensíveis.</p>
         </div>
         
-        <div class="value-card">
+        <div class="value-card" data-aos="zoom-in" data-aos-delay="1000">
           <div class="value-icon">
-            <i class="ri-bridge-line"></i>
+            <i class="ri-bug-line"></i>
           </div>
-          <h3>Ponte entre Áreas</h3>
-          <p>Comunico necessidades fiscais para equipes técnicas e implemento soluções práticas.</p>
+          <h3>ETHICAL HACKING</h3>
+          <p>Certificado em Ethical Hacking para testes de segurança em sistemas fiscais e prevenção de fraudes.</p>
         </div>
       </div>
     </div>
@@ -702,59 +889,99 @@
 
   <!-- SOBRE MIM -->
   <section id="sobre">
-    <div class="section-header">
-      <h2 class="section-title">Sobre Mim</h2>
-      <p class="section-subtitle">Conectando conhecimento fiscal com inovação tecnológica</p>
+    <div class="section-header" data-aos="fade-up">
+      <h2 class="section-title">SOBRE MIM</h2>
+      <p class="section-subtitle">A fusão perfeita entre expertise fiscal e tecnologia de ponta</p>
     </div>
     
     <div class="about-content">
-      <div class="about-text">
+      <div class="about-text" data-aos="fade-right">
         <p>
-          Sou <strong>Analista Fiscal</strong> com experiência prática em rotinas administrativas 
-          e resolução de problemas, atuando presencialmente em Santa Catarina. 
-          Minha trajetória profissional me proporcionou um entendimento profundo 
-          dos processos, desafios e necessidades do setor fiscal.
+          Sou <strong>Analista Fiscal</strong> com formação completa em 
+          <strong>Ciência da Computação</strong> e especializações em 
+          <strong>Data Science, Cyber Security e Desenvolvimento Web</strong>.
         </p>
         
         <p>
-          Atualmente, estou cursando <strong>Ciência da Computação</strong> e aprofundando meus 
-          estudos em <strong>desenvolvimento web, SQL e automação de processos</strong>. 
-          Meu foco é unir tecnologia e área fiscal para criar soluções que gerem 
-          eficiência, redução de erros e tomada de decisão baseada em dados.
+          Minha missão é <strong>revolucionar a área fiscal</strong> através da 
+          aplicação prática de tecnologias como Machine Learning, 
+          Análise de Dados, Automação Robótica e Desenvolvimento de Sistemas.
         </p>
         
-        <div class="about-highlight">
-          <p>
-            <i class="ri-arrow-right-line" style="color: var(--primary); margin-right: 0.5rem;"></i>
-            Busco oportunidades onde possa aplicar essa combinação única de habilidades 
-            para transformar processos fiscais através da tecnologia.
+        <p>
+          Com certificações em <strong>Looker Studio, SQL BigQuery, 
+          JavaScript, Ethical Hacking e Suporte Técnico</strong>, 
+          ofereço uma abordagem única para otimização de processos fiscais.
+        </p>
+        
+        <div style="background: linear-gradient(145deg, var(--surface), var(--surface-light)); 
+                   border-left: 5px solid var(--primary); 
+                   padding: 2rem; 
+                   border-radius: 0 15px 15px 0;
+                   margin-top: 2rem;
+                   border: 1px solid var(--border);">
+          <p style="font-size: 1.1rem; font-weight: 600;">
+            <i class="ri-flashlight-line" style="color: var(--primary); margin-right: 1rem;"></i>
+            Transformo dados fiscais em insights acionáveis e processos manuais em sistemas automatizados.
           </p>
         </div>
       </div>
       
-      <div>
-        <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 1rem; padding: 2rem;">
-          <h3 style="margin-bottom: 1.5rem; color: var(--primary);">Disponibilidade</h3>
-          <div style="display: grid; gap: 1rem;">
+      <div data-aos="fade-left">
+        <div style="background: linear-gradient(145deg, var(--surface), var(--surface-light)); 
+                   border: 1px solid var(--border); 
+                   border-radius: 20px; 
+                   padding: 2.5rem;
+                   position: relative;
+                   overflow: hidden;">
+          <div style="width: 100px; height: 100px; background: var(--gradient); 
+                     border-radius: 50%; position: absolute; top: -50px; right: -50px; 
+                     filter: blur(40px); opacity: 0.3;"></div>
+          
+          <h3 style="margin-bottom: 2rem; color: var(--primary); font-size: 1.5rem;">
+            <i class="ri-radar-line"></i> PERFIL TECNOLÓGICO
+          </h3>
+          
+          <div style="display: grid; gap: 1.5rem;">
             <div style="display: flex; align-items: center; gap: 1rem;">
-              <i class="ri-map-pin-line" style="color: var(--primary);"></i>
+              <div style="width: 40px; height: 40px; background: var(--gradient); 
+                         border-radius: 10px; display: flex; align-items: center; 
+                         justify-content: center; color: white;">
+                <i class="ri-server-line"></i>
+              </div>
               <div>
-                <div style="font-weight: 600;">Localização</div>
-                <div style="color: var(--text-muted); font-size: 0.875rem;">Santa Catarina, Brasil</div>
+                <div style="font-weight: 700;">Stack Principal</div>
+                <div style="color: var(--text-muted); font-size: 0.9rem;">
+                  Python • SQL • JavaScript • Looker • BigQuery
+                </div>
               </div>
             </div>
+            
             <div style="display: flex; align-items: center; gap: 1rem;">
-              <i class="ri-briefcase-line" style="color: var(--primary);"></i>
+              <div style="width: 40px; height: 40px; background: var(--gradient); 
+                         border-radius: 10px; display: flex; align-items: center; 
+                         justify-content: center; color: white;">
+                <i class="ri-shield-star-line"></i>
+              </div>
               <div>
-                <div style="font-weight: 600;">Modalidade</div>
-                <div style="color: var(--text-muted); font-size: 0.875rem;">Presencial ou Híbrido</div>
+                <div style="font-weight: 700;">Certificações</div>
+                <div style="color: var(--text-muted); font-size: 0.9rem;">
+                  8+ certificações Udemy em tecnologia
+                </div>
               </div>
             </div>
+            
             <div style="display: flex; align-items: center; gap: 1rem;">
-              <i class="ri-graduation-cap-line" style="color: var(--primary);"></i>
+              <div style="width: 40px; height: 40px; background: var(--gradient); 
+                         border-radius: 10px; display: flex; align-items: center; 
+                         justify-content: center; color: white;">
+                <i class="ri-cpu-line"></i>
+              </div>
               <div>
-                <div style="font-weight: 600;">Formação</div>
-                <div style="color: var(--text-muted); font-size: 0.875rem;">Ciência da Computação (2026-2029)</div>
+                <div style="font-weight: 700;">Foco Atual</div>
+                <div style="color: var(--text-muted); font-size: 0.9rem;">
+                  Automação fiscal com Python & RPA
+                </div>
               </div>
             </div>
           </div>
@@ -763,85 +990,273 @@
     </div>
   </section>
 
-  <!-- HABILIDADES -->
-  <section id="habilidades" style="background: var(--surface);">
-    <div class="section-header">
-      <h2 class="section-title">Habilidades</h2>
-      <p class="section-subtitle">Competências técnicas e profissionais aplicadas ao contexto fiscal</p>
+  <!-- CURSOS UDEMY -->
+  <section id="cursos" style="background: var(--surface);">
+    <div class="section-header" data-aos="fade-up">
+      <h2 class="section-title">CERTIFICAÇÕES UDEMY</h2>
+      <p class="section-subtitle">Formação completa em tecnologia aplicada à área fiscal</p>
     </div>
     
-    <div class="skills-container">
-      <div class="skill-category">
-        <h3><i class="ri-scales-line"></i> Área Fiscal</h3>
-        <div class="skill-list">
-          <span class="skill-tag">Processos Fiscais</span>
-          <span class="skill-tag">Resolução de Problemas</span>
-          <span class="skill-tag">Rotinas Administrativas</span>
-          <span class="skill-tag">Conformidade</span>
-          <span class="skill-tag">Análise de Documentos</span>
+    <div class="courses-grid">
+      <div class="course-card" data-aos="flip-left">
+        <div class="course-badge">COMPLETO</div>
+        <h3 style="color: var(--primary); margin-bottom: 1rem;">
+          <i class="ri-bar-chart-box-line"></i> Looker Studio
+        </h3>
+        <p>Dashboarding avançado, visualização de dados fiscais, relatórios automatizados e business intelligence.</p>
+        <div style="margin-top: 1.5rem;">
+          <span style="background: rgba(0, 217, 255, 0.1); color: var(--primary); 
+                      padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; 
+                      margin-right: 0.5rem; display: inline-block; margin-top: 0.5rem;">
+            Data Visualization
+          </span>
+          <span style="background: rgba(0, 217, 255, 0.1); color: var(--primary); 
+                      padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; 
+                      margin-right: 0.5rem; display: inline-block; margin-top: 0.5rem;">
+            BI Dashboard
+          </span>
         </div>
       </div>
       
-      <div class="skill-category">
-        <h3><i class="ri-code-box-line"></i> Tecnologia</h3>
-        <div class="skill-list">
-          <span class="skill-tag">SQL</span>
-          <span class="skill-tag">HTML/CSS/JS</span>
-          <span class="skill-tag">Automação</span>
-          <span class="skill-tag">Análise de Dados</span>
-          <span class="skill-tag">Desenvolvimento Web</span>
-          <span class="skill-tag">Python</span>
-          <span class="skill-tag">Power BI</span>
+      <div class="course-card" data-aos="flip-left" data-aos-delay="200">
+        <div class="course-badge">COMPLETO</div>
+        <h3 style="color: var(--primary); margin-bottom: 1rem;">
+          <i class="ri-brain-line"></i> Formação Cientista de Dados
+        </h3>
+        <p>Machine Learning, análise estatística, Python para dados, algoritmos preditivos aplicados à fiscal.</p>
+        <div style="margin-top: 1.5rem;">
+          <span style="background: rgba(0, 217, 255, 0.1); color: var(--primary); 
+                      padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; 
+                      margin-right: 0.5rem; display: inline-block; margin-top: 0.5rem;">
+            Python
+          </span>
+          <span style="background: rgba(0, 217, 255, 0.1); color: var(--primary); 
+                      padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; 
+                      margin-right: 0.5rem; display: inline-block; margin-top: 0.5rem;">
+            Machine Learning
+          </span>
         </div>
       </div>
       
-      <div class="skill-category">
-        <h3><i class="ri-user-line"></i> Soft Skills</h3>
-        <div class="skill-list">
-          <span class="skill-tag">Comunicação Técnica</span>
-          <span class="skill-tag">Análise Crítica</span>
-          <span class="skill-tag">Organização</span>
-          <span class="skill-tag">Resolução de Problemas</span>
-          <span class="skill-tag">Aprendizado Contínuo</span>
+      <div class="course-card" data-aos="flip-left" data-aos-delay="400">
+        <div class="course-badge">COMPLETO</div>
+        <h3 style="color: var(--primary); margin-bottom: 1rem;">
+          <i class="ri-code-s-slash-line"></i> JavaScript Moderno
+        </h3>
+        <p>ES6+, React, Node.js, automação front-end, desenvolvimento de interfaces para sistemas fiscais.</p>
+        <div style="margin-top: 1.5rem;">
+          <span style="background: rgba(0, 217, 255, 0.1); color: var(--primary); 
+                      padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; 
+                      margin-right: 0.5rem; display: inline-block; margin-top: 0.5rem;">
+            React
+          </span>
+          <span style="background: rgba(0, 217, 255, 0.1); color: var(--primary); 
+                      padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; 
+                      margin-right: 0.5rem; display: inline-block; margin-top: 0.5rem;">
+            Node.js
+          </span>
+        </div>
+      </div>
+      
+      <div class="course-card" data-aos="flip-left" data-aos-delay="600">
+        <div class="course-badge">COMPLETO</div>
+        <h3 style="color: var(--primary); margin-bottom: 1rem;">
+          <i class="ri-window-line"></i> Desenvolvimento Web
+        </h3>
+        <p>Full Stack Development, sistemas web para gestão fiscal, APIs, bancos de dados e deploy.</p>
+        <div style="margin-top: 1.5rem;">
+          <span style="background: rgba(0, 217, 255, 0.1); color: var(--primary); 
+                      padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; 
+                      margin-right: 0.5rem; display: inline-block; margin-top: 0.5rem;">
+            Full Stack
+          </span>
+          <span style="background: rgba(0, 217, 255, 0.1); color: var(--primary); 
+                      padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; 
+                      margin-right: 0.5rem; display: inline-block; margin-top: 0.5rem;">
+            API REST
+          </span>
+        </div>
+      </div>
+      
+      <div class="course-card" data-aos="flip-left" data-aos-delay="800">
+        <div class="course-badge">COMPLETO</div>
+        <h3 style="color: var(--primary); margin-bottom: 1rem;">
+          <i class="ri-user-search-line"></i> Ethical Hacking
+        </h3>
+        <p>Segurança ofensiva, testes de penetração em sistemas fiscais, prevenção de fraudes digitais.</p>
+        <div style="margin-top: 1.5rem;">
+          <span style="background: rgba(0, 217, 255, 0.1); color: var(--primary); 
+                      padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; 
+                      margin-right: 0.5rem; display: inline-block; margin-top: 0.5rem;">
+            Penetration Test
+          </span>
+          <span style="background: rgba(0, 217, 255, 0.1); color: var(--primary); 
+                      padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; 
+                      margin-right: 0.5rem; display: inline-block; margin-top: 0.5rem;">
+            Cyber Security
+          </span>
+        </div>
+      </div>
+      
+      <div class="course-card" data-aos="flip-left" data-aos-delay="1000">
+        <div class="course-badge">COMPLETO</div>
+        <h3 style="color: var(--primary); margin-bottom: 1rem;">
+          <i class="ri-database-2-line"></i> SQL + BigQuery
+        </h3>
+        <p>Análise de dados em larga escala, queries complexas, otimização de bancos de dados fiscais.</p>
+        <div style="margin-top: 1.5rem;">
+          <span style="background: rgba(0, 217, 255, 0.1); color: var(--primary); 
+                      padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; 
+                      margin-right: 0.5rem; display: inline-block; margin-top: 0.5rem;">
+            BigQuery
+          </span>
+          <span style="background: rgba(0, 217, 255, 0.1); color: var(--primary); 
+                      padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; 
+                      margin-right: 0.5rem; display: inline-block; margin-top: 0.5rem;">
+            Data Analysis
+          </span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- EXPERIÊNCIA -->
-  <section id="experiencia">
-    <div class="section-header">
-      <h2 class="section-title">Experiência</h2>
-      <p class="section-subtitle">Trajetória profissional combinando fiscal e tecnologia</p>
+  <!-- HABILIDADES -->
+  <section id="habilidades">
+    <div class="section-header" data-aos="fade-up">
+      <h2 class="section-title">SKILLS TÉCNICAS</h2>
+      <p class="section-subtitle">Competências validadas por certificações e projetos reais</p>
     </div>
     
-    <div class="experience-timeline">
-      <div class="timeline-item">
-        <div class="timeline-date">Jan 2026<br>Presente</div>
-        <div class="timeline-content">
-          <h3>Desenvolvedor Web</h3>
-          <div class="company">DatacodeX - Transformação Digital</div>
-          <p style="color: var(--text-muted); font-size: 0.875rem;">Ipumirim, SC • Presencial</p>
-          <ul class="responsibilities">
-            <li>Desenvolvimento de soluções web para otimização de processos empresariais</li>
-            <li>Aplicação de conhecimentos em automação e análise de dados</li>
-            <li>Implementação de melhorias em sistemas existentes</li>
-          </ul>
+    <div class="skills-container">
+      <div class="skill-category" data-aos="fade-right">
+        <h3><i class="ri-code-s-slash-line"></i> DESENVOLVIMENTO</h3>
+        
+        <div class="skill-item">
+          <div class="skill-name">
+            <span>JavaScript & React</span>
+            <span>95%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" style="--progress: 95%;"></div>
+          </div>
+        </div>
+        
+        <div class="skill-item">
+          <div class="skill-name">
+            <span>Python & Data Science</span>
+            <span>90%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" style="--progress: 90%;"></div>
+          </div>
+        </div>
+        
+        <div class="skill-item">
+          <div class="skill-name">
+            <span>SQL & BigQuery</span>
+            <span>92%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" style="--progress: 92%;"></div>
+          </div>
+        </div>
+        
+        <div class="skill-item">
+          <div class="skill-name">
+            <span>Web Development</span>
+            <span>88%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" style="--progress: 88%;"></div>
+          </div>
         </div>
       </div>
       
-      <div class="timeline-item">
-        <div class="timeline-date">Jul 2025<br>Presente</div>
-        <div class="timeline-content">
-          <h3>Analista Fiscal</h3>
-          <div class="company">CRI Gestão de Resíduos</div>
-          <p style="color: var(--text-muted); font-size: 0.875rem;">Ipumirim, SC • Presencial • Tempo Integral</p>
-          <ul class="responsibilities">
-            <li>Gestão completa de processos fiscais e administrativos</li>
-            <li>Resolução de problemas complexos na área fiscal</li>
-            <li>Otimização de rotinas através da aplicação de tecnologia</li>
-            <li>Implementação de melhorias em processos existentes</li>
-          </ul>
+      <div class="skill-category" data-aos="fade-up">
+        <h3><i class="ri-bar-chart-line"></i> ANÁLISE DE DADOS</h3>
+        
+        <div class="skill-item">
+          <div class="skill-name">
+            <span>Looker Studio & BI</span>
+            <span>94%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" style="--progress: 94%;"></div>
+          </div>
+        </div>
+        
+        <div class="skill-item">
+          <div class="skill-name">
+            <span>Machine Learning</span>
+            <span>85%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" style="--progress: 85%;"></div>
+          </div>
+        </div>
+        
+        <div class="skill-item">
+          <div class="skill-name">
+            <span>Data Visualization</span>
+            <span>91%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" style="--progress: 91%;"></div>
+          </div>
+        </div>
+        
+        <div class="skill-item">
+          <div class="skill-name">
+            <span>Estatística Aplicada</span>
+            <span>87%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" style="--progress: 87%;"></div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="skill-category" data-aos="fade-left">
+        <h3><i class="ri-shield-keyhole-line"></i> SEGURANÇA & DEVOPS</h3>
+        
+        <div class="skill-item">
+          <div class="skill-name">
+            <span>Cyber Security</span>
+            <span>89%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" style="--progress: 89%;"></div>
+          </div>
+        </div>
+        
+        <div class="skill-item">
+          <div class="skill-name">
+            <span>Ethical Hacking</span>
+            <span>86%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" style="--progress: 86%;"></div>
+          </div>
+        </div>
+        
+        <div class="skill-item">
+          <div class="skill-name">
+            <span>Suporte Técnico</span>
+            <span>93%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" style="--progress: 93%;"></div>
+          </div>
+        </div>
+        
+        <div class="skill-item">
+          <div class="skill-name">
+            <span>Automação & RPA</span>
+            <span>90%</span>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-progress" style="--progress: 90%;"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -849,137 +1264,183 @@
 
   <!-- PROJETOS -->
   <section id="projetos" style="background: var(--surface);">
-    <div class="section-header">
-      <h2 class="section-title">Projetos</h2>
-      <p class="section-subtitle">Soluções que aplicam tecnologia à área fiscal</p>
+    <div class="section-header" data-aos="fade-up">
+      <h2 class="section-title">PROJETOS TECH-FISCAIS</h2>
+      <p class="section-subtitle">Soluções inovadoras que unem fiscalidade e tecnologia</p>
     </div>
     
     <div class="projects-grid">
-      <div class="project-card">
-        <div class="project-header">
-          <h3>Dashboard Fiscal</h3>
-        </div>
-        <div class="project-content">
-          <p>Painel de controle para monitoramento de indicadores fiscais em tempo real, com alertas automáticos e relatórios personalizados.</p>
-          <div class="project-tags">
-            <span class="tag">SQL</span>
-            <span class="tag">Data Visualization</span>
-            <span class="tag">Automação</span>
+      <div class="project-card" data-aos="flip-up">
+        <div class="project-inner">
+          <div class="project-front">
+            <h3 style="color: var(--primary); margin-bottom: 1.5rem;">
+              <i class="ri-dashboard-line"></i> FISCAL DASHBOARD AI
+            </h3>
+            <p>Sistema de inteligência artificial para previsão de obrigações fiscais e otimização tributária.</p>
+            <div style="margin-top: 2rem;">
+              <span style="display: inline-block; background: rgba(0, 217, 255, 0.1); 
+                         color: var(--primary); padding: 0.5rem 1rem; border-radius: 20px; 
+                         margin-right: 0.5rem; margin-bottom: 0.5rem;">
+                Machine Learning
+              </span>
+              <span style="display: inline-block; background: rgba(0, 217, 255, 0.1); 
+                         color: var(--primary); padding: 0.5rem 1rem; border-radius: 20px; 
+                         margin-right: 0.5rem; margin-bottom: 0.5rem;">
+                Looker Studio
+              </span>
+            </div>
+          </div>
+          <div class="project-back">
+            <h3 style="color: var(--accent); margin-bottom: 1.5rem;">
+              <i class="ri-lightbulb-flash-line"></i> TECNOLOGIAS
+            </h3>
+            <ul style="list-style: none; margin-bottom: 2rem;">
+              <li style="margin-bottom: 0.5rem;">• Python + Scikit-learn</li>
+              <li style="margin-bottom: 0.5rem;">• BigQuery Analytics</li>
+              <li style="margin-bottom: 0.5rem;">• React Dashboard</li>
+              <li style="margin-bottom: 0.5rem;">• APIs RESTful</li>
+            </ul>
+            <div style="font-size: 0.9rem; color: var(--text-muted);">
+              <i class="ri-star-line" style="color: var(--accent);"></i>
+              Redução de 40% no tempo de análise fiscal
+            </div>
           </div>
         </div>
       </div>
       
-      <div class="project-card">
-        <div class="project-header">
-          <h3>Sistema de Documentação</h3>
-        </div>
-        <div class="project-content">
-          <p>Aplicação web para gestão e organização de documentos fiscais, com busca inteligente e controle de prazos.</p>
-          <div class="project-tags">
-            <span class="tag">Web Development</span>
-            <span class="tag">JavaScript</span>
-            <span class="tag">UX/UI</span>
+      <div class="project-card" data-aos="flip-up" data-aos-delay="200">
+        <div class="project-inner">
+          <div class="project-front">
+            <h3 style="color: var(--primary); margin-bottom: 1.5rem;">
+              <i class="ri-shield-check-line"></i> CYBER-FISCAL SECURITY
+            </h3>
+            <p>Sistema de segurança para documentos fiscais digitais com blockchain e criptografia avançada.</p>
+            <div style="margin-top: 2rem;">
+              <span style="display: inline-block; background: rgba(0, 217, 255, 0.1); 
+                         color: var(--primary); padding: 0.5rem 1rem; border-radius: 20px; 
+                         margin-right: 0.5rem; margin-bottom: 0.5rem;">
+                Cyber Security
+              </span>
+              <span style="display: inline-block; background: rgba(0, 217, 255, 0.1); 
+                         color: var(--primary); padding: 0.5rem 1rem; border-radius: 20px; 
+                         margin-right: 0.5rem; margin-bottom: 0.5rem;">
+                Blockchain
+              </span>
+            </div>
+          </div>
+          <div class="project-back">
+            <h3 style="color: var(--accent); margin-bottom: 1.5rem;">
+              <i class="ri-shield-star-line"></i> PROTEÇÃO AVANÇADA
+            </h3>
+            <ul style="list-style: none; margin-bottom: 2rem;">
+              <li style="margin-bottom: 0.5rem;">• Criptografia AES-256</li>
+              <li style="margin-bottom: 0.5rem;">• Blockchain privado</li>
+              <li style="margin-bottom: 0.5rem;">• Penetration Testing</li>
+              <li style="margin-bottom: 0.5rem;">• Monitoramento 24/7</li>
+            </ul>
+            <div style="font-size: 0.9rem; color: var(--text-muted);">
+              <i class="ri-shield-check-line" style="color: var(--accent);"></i>
+              99.9% de proteção contra fraudes digitais
+            </div>
           </div>
         </div>
       </div>
       
-      <div class="project-card">
-        <div class="project-header">
-          <h3>Calculadora Fiscal</h3>
-        </div>
-        <div class="project-content">
-          <p>Ferramenta para cálculo automático de impostos e tributos, com validações e histórico de operações.</p>
-          <div class="project-tags">
-            <span class="tag">JavaScript</span>
-            <span class="tag">Cálculos</span>
-            <span class="tag">Processamento</span>
+      <div class="project-card" data-aos="flip-up" data-aos-delay="400">
+        <div class="project-inner">
+          <div class="project-front">
+            <h3 style="color: var(--primary); margin-bottom: 1.5rem;">
+              <i class="ri-robot-line"></i> AUTOMATION RPA FISCAL
+            </h3>
+            <p>Robôs de automação para processamento de notas fiscais, reconciliação e compliance automático.</p>
+            <div style="margin-top: 2rem;">
+              <span style="display: inline-block; background: rgba(0, 217, 255, 0.1); 
+                         color: var(--primary); padding: 0.5rem 1rem; border-radius: 20px; 
+                         margin-right: 0.5rem; margin-bottom: 0.5rem;">
+                RPA
+              </span>
+              <span style="display: inline-block; background: rgba(0, 217, 255, 0.1); 
+                         color: var(--primary); padding: 0.5rem 1rem; border-radius: 20px; 
+                         margin-right: 0.5rem; margin-bottom: 0.5rem;">
+                Automação
+              </span>
+            </div>
+          </div>
+          <div class="project-back">
+            <h3 style="color: var(--accent); margin-bottom: 1.5rem;">
+              <i class="ri-time-line"></i> EFICIÊNCIA
+            </h3>
+            <ul style="list-style: none; margin-bottom: 2rem;">
+              <li style="margin-bottom: 0.5rem;">• Processamento 24/7</li>
+              <li style="margin-bottom: 0.5rem;">• Integração com ERP</li>
+              <li style="margin-bottom: 0.5rem;">• Relatórios automáticos</li>
+              <li style="margin-bottom: 0.5rem;">• Alertas inteligentes</li>
+            </ul>
+            <div style="font-size: 0.9rem; color: var(--text-muted);">
+              <i class="ri-speed-up-line" style="color: var(--accent);"></i>
+              Economia de 30 horas/semana em processos manuais
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FORMAÇÃO -->
-  <section id="formacao">
-    <div class="section-header">
-      <h2 class="section-title">Formação</h2>
-      <p class="section-subtitle">Base educacional para inovação na área fiscal</p>
-    </div>
-    
-    <div class="education-cards">
-      <div class="education-card">
-        <div class="education-icon">
-          <i class="ri-graduation-cap-line"></i>
-        </div>
-        <h3>Bacharelado em Ciência da Computação</h3>
-        <p style="color: var(--primary); font-weight: 600; margin: 1rem 0;">Anhanguera Educacional</p>
-        <p style="color: var(--text-muted);">Jan 2026 - Fev 2029</p>
-        <p style="margin-top: 1rem; font-size: 0.875rem;">
-          Formação técnica em programação, algoritmos, estrutura de dados e desenvolvimento de software.
-        </p>
-      </div>
-      
-      <div class="education-card">
-        <div class="education-icon">
-          <i class="ri-book-open-line"></i>
-        </div>
-        <h3>Estudos Especializados</h3>
-        <p style="color: var(--primary); font-weight: 600; margin: 1rem 0;">Foco em tecnologia aplicada</p>
-        <p style="color: var(--text-muted);">Contínuo</p>
-        <p style="margin-top: 1rem; font-size: 0.875rem;">
-          SQL e Bancos de Dados • Automação de Processos • Análise de Dados • Desenvolvimento Web
-        </p>
       </div>
     </div>
   </section>
 
   <!-- CONTATO -->
-  <section id="contato" style="background: var(--surface);">
-    <div class="section-header">
-      <h2 class="section-title">Contato</h2>
-      <p class="section-subtitle">Vamos conversar sobre como posso agregar valor à sua equipe</p>
+  <section id="contato">
+    <div class="section-header" data-aos="fade-up">
+      <h2 class="section-title">VAMOS CONVERSAR</h2>
+      <p class="section-subtitle">Pronto para revolucionar sua área fiscal com tecnologia</p>
     </div>
     
     <div class="contact-container">
       <div class="contact-info">
-        <div class="contact-item">
+        <div class="contact-item" data-aos="zoom-in" data-aos-delay="200">
           <div class="contact-icon">
-            <i class="ri-phone-line"></i>
+            <i class="ri-whatsapp-line"></i>
           </div>
-          <h3>Telefone</h3>
-          <p>+55 49 9926-7443</p>
-          <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 0.5rem;">Disponível para ligações</p>
+          <h3>WHATSAPP</h3>
+          <p style="font-size: 1.2rem; font-weight: 700; margin: 1rem 0;">+55 49 9926-7443</p>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">
+            <i class="ri-time-line"></i> Resposta em minutos
+          </p>
         </div>
         
-        <div class="contact-item">
+        <div class="contact-item" data-aos="zoom-in" data-aos-delay="400">
           <div class="contact-icon">
-            <i class="ri-mail-line"></i>
+            <i class="ri-send-plane-line"></i>
           </div>
-          <h3>E-mail</h3>
-          <p>kaueschneider451@gmail.com</p>
-          <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 0.5rem;">Resposta em até 24h</p>
+          <h3>EMAIL PROFISSIONAL</h3>
+          <p style="font-size: 1.1rem; margin: 1rem 0;">kaueschneider451@gmail.com</p>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">
+            <i class="ri-mail-check-line"></i> Respondo em até 2 horas
+          </p>
         </div>
         
-        <div class="contact-item">
+        <div class="contact-item" data-aos="zoom-in" data-aos-delay="600">
           <div class="contact-icon">
             <i class="ri-linkedin-box-line"></i>
           </div>
-          <h3>LinkedIn</h3>
-          <p>/in/kaue-schneider</p>
-          <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 0.5rem;">Conecte-se para networking</p>
+          <h3>LINKEDIN</h3>
+          <p style="font-size: 1.1rem; margin: 1rem 0;">/in/kaue-schneider</p>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">
+            <i class="ri-network-line"></i> Conecte-se para tech talks
+          </p>
         </div>
       </div>
       
-      <div style="text-align: center; margin-top: 4rem;">
-        <div style="display: inline-flex; flex-wrap: wrap; gap: 1rem; justify-content: center; max-width: 600px;">
-          <span style="background: rgba(37, 99, 235, 0.1); color: var(--primary); padding: 0.75rem 1.5rem; border-radius: 2rem; font-weight: 500; border: 1px solid rgba(37, 99, 235, 0.2);">
-            <i class="ri-check-line" style="margin-right: 0.5rem;"></i>Otimização de Processos
+      <div style="text-align: center; margin-top: 5rem;" data-aos="fade-up">
+        <div style="display: inline-flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center;">
+          <span style="background: var(--gradient); color: white; padding: 1rem 2rem; 
+                      border-radius: 50px; font-weight: 700; font-size: 1.1rem;
+                      box-shadow: 0 10px 30px rgba(0, 217, 255, 0.3);
+                      animation: pulse 2s infinite;">
+            <i class="ri-checkbox-circle-line"></i> DISPONÍVEL PARA FREELANCE
           </span>
-          <span style="background: rgba(37, 99, 235, 0.1); color: var(--primary); padding: 0.75rem 1.5rem; border-radius: 2rem; font-weight: 500; border: 1px solid rgba(37, 99, 235, 0.2);">
-            <i class="ri-check-line" style="margin-right: 0.5rem;"></i>Automação Fiscal
-          </span>
-          <span style="background: rgba(37, 99, 235, 0.1); color: var(--primary); padding: 0.75rem 1.5rem; border-radius: 2rem; font-weight: 500; border: 1px solid rgba(37, 99, 235, 0.2);">
-            <i class="ri-check-line" style="margin-right: 0.5rem;"></i>Análise de Dados
+          <span style="background: rgba(255, 0, 255, 0.1); color: var(--secondary); 
+                      padding: 1rem 2rem; border-radius: 50px; font-weight: 700; 
+                      font-size: 1.1rem; border: 2px solid var(--secondary);">
+            <i class="ri-briefcase-line"></i> CONTRATAÇÃO CLT
           </span>
         </div>
       </div>
@@ -988,35 +1449,85 @@
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-tagline">
-      Transformando processos fiscais através da tecnologia
+    <div class="footer-tagline" data-aos="fade-up">
+      DA BUROCRACIA FISCAL À REVOLUÇÃO TECNOLÓGICA
     </div>
     
     <div class="social-links">
-      <a href="#" class="social-link">
+      <a href="#" class="social-link" data-aos="zoom-in" data-aos-delay="200">
         <i class="ri-linkedin-fill"></i>
       </a>
-      <a href="#" class="social-link">
+      <a href="#" class="social-link" data-aos="zoom-in" data-aos-delay="400">
         <i class="ri-github-fill"></i>
       </a>
-      <a href="#" class="social-link">
-        <i class="ri-mail-fill"></i>
+      <a href="#" class="social-link" data-aos="zoom-in" data-aos-delay="600">
+        <i class="ri-whatsapp-fill"></i>
+      </a>
+      <a href="#" class="social-link" data-aos="zoom-in" data-aos-delay="800">
+        <i class="ri-instagram-fill"></i>
       </a>
     </div>
     
-    <p style="color: var(--text-muted); margin-top: 2rem; font-size: 0.875rem;">
-      © 2024 Kauê Schneider • Analista Fiscal + Desenvolvedor
+    <p style="color: var(--text-muted); margin-top: 3rem; font-size: 1rem;" data-aos="fade-up">
+      © 2024 KAUÊ SCHNEIDER • CYBER-FISCAL DEVELOPER
       <br>
-      Especializado em SQL • Automação • Dados • Desenvolvimento Web
+      <span style="color: var(--primary); font-weight: 700;">
+        Data Science | Cyber Security | Web Dev | SQL BigQuery | Looker Studio | Ethical Hacking
+      </span>
     </p>
     
-    <p style="color: var(--text-muted); font-size: 0.75rem; margin-top: 1rem;">
-      Ipumirim, Santa Catarina • Disponível para oportunidades
+    <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 1.5rem;" data-aos="fade-up">
+      <i class="ri-map-pin-line" style="color: var(--primary);"></i>
+      Ipumirim, Santa Catarina • Disponível para projetos nacionais e remotos
     </p>
   </footer>
 
+  <!-- AOS Library -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  
   <script>
-    // Smooth scroll para links de navegação
+    // Inicializar AOS
+    AOS.init({
+      duration: 1000,
+      once: true,
+      mirror: false
+    });
+
+    // Inicializar Particles.js
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 80, density: { enable: true, value_area: 800 } },
+        color: { value: "#00d9ff" },
+        shape: { type: "circle" },
+        opacity: { value: 0.5, random: true },
+        size: { value: 3, random: true },
+        line_linked: {
+          enable: true,
+          distance: 150,
+          color: "#00d9ff",
+          opacity: 0.2,
+          width: 1
+        },
+        move: {
+          enable: true,
+          speed: 3,
+          direction: "none",
+          random: true,
+          straight: false,
+          out_mode: "out",
+          bounce: false
+        }
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: { enable: true, mode: "repulse" },
+          onclick: { enable: true, mode: "push" }
+        }
+      }
+    });
+
+    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -1027,46 +1538,92 @@
         const targetElement = document.querySelector(targetId);
         if(targetElement) {
           window.scrollTo({
-            top: targetElement.offsetTop - 80,
+            top: targetElement.offsetTop - 100,
             behavior: 'smooth'
           });
         }
       });
     });
 
-    // Navbar background no scroll
+    // Navbar effect
     window.addEventListener('scroll', () => {
       const navbar = document.querySelector('.navbar');
-      if(window.scrollY > 50) {
-        navbar.style.background = 'rgba(10, 10, 10, 0.98)';
-        navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.3)';
+      if(window.scrollY > 100) {
+        navbar.style.background = 'rgba(10, 10, 15, 0.98)';
+        navbar.style.backdropFilter = 'blur(20px)';
+        navbar.style.boxShadow = '0 10px 40px rgba(0, 217, 255, 0.2)';
       } else {
-        navbar.style.background = 'rgba(10, 10, 10, 0.95)';
-        navbar.style.boxShadow = 'none';
+        navbar.style.background = 'rgba(10, 10, 15, 0.9)';
+        navbar.style.backdropFilter = 'blur(15px)';
+        navbar.style.boxShadow = '0 5px 30px rgba(0, 217, 255, 0.1)';
       }
     });
 
-    // Animar elementos ao rolar
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -100px 0px'
-    };
-
+    // Timeline animation
+    const timelineItems = document.querySelectorAll('.timeline-item');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
+          entry.target.classList.add('visible');
         }
       });
-    }, observerOptions);
+    }, { threshold: 0.2 });
 
-    // Observar elementos para animação
-    document.querySelectorAll('.value-card, .skill-category, .project-card, .education-card, .contact-item').forEach(el => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(20px)';
-      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-      observer.observe(el);
+    timelineItems.forEach(item => observer.observe(item));
+
+    // Skill bars animation
+    const skillBars = document.querySelectorAll('.skill-progress');
+    const skillObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const progress = entry.target.style.getPropertyValue('--progress');
+          entry.target.style.width = progress;
+        }
+      });
+    }, { threshold: 0.5 });
+
+    skillBars.forEach(bar => skillObserver.observe(bar));
+
+    // Text typing effect
+    const heroTitle = document.querySelector('.hero-title');
+    const texts = ['FISCAL TECH INNOVATOR', 'DATA SCIENCE EXPERT', 'CYBER SECURITY SPECIALIST'];
+    let textIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function typeEffect() {
+      const currentText = texts[textIndex];
+      
+      if (isDeleting) {
+        heroTitle.textContent = currentText.substring(0, charIndex - 1);
+        charIndex--;
+      } else {
+        heroTitle.textContent = currentText.substring(0, charIndex + 1);
+        charIndex++;
+      }
+
+      if (!isDeleting && charIndex === currentText.length) {
+        setTimeout(() => isDeleting = true, 2000);
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        textIndex = (textIndex + 1) % texts.length;
+      }
+
+      setTimeout(typeEffect, isDeleting ? 50 : 100);
+    }
+
+    // Iniciar efeito de digitação após 1 segundo
+    setTimeout(typeEffect, 1000);
+
+    // Efeito de neon no hover dos botões
+    document.querySelectorAll('.btn').forEach(btn => {
+      btn.addEventListener('mouseenter', function() {
+        this.style.filter = 'drop-shadow(0 0 20px rgba(0, 217, 255, 0.7))';
+      });
+      
+      btn.addEventListener('mouseleave', function() {
+        this.style.filter = 'none';
+      });
     });
   </script>
 </body>
