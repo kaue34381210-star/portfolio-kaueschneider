@@ -807,6 +807,134 @@
     ::-webkit-scrollbar-thumb:hover {
       background: var(--primary);
     }
+     /* ===========================
+   LAYOUT FIX PATCH - KAUE
+=========================== */
+
+/* Container global */
+section,
+.hero,
+.footer,
+.navbar {
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Evita estouro lateral */
+body {
+  overflow-x: hidden;
+}
+
+* {
+  max-width: 100%;
+}
+
+/* Corrige hero com navbar fixa */
+.hero {
+  padding-top: 120px;
+}
+
+/* Centraliza hero melhor */
+.hero-content {
+  width: 100%;
+}
+
+/* Grids mais seguros */
+.value-grid,
+.courses-grid,
+.skills-container,
+.projects-grid,
+.contact-info {
+  width: 100%;
+}
+
+/* Ajuste de minmax para mobile */
+@media (max-width: 900px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-container {
+    grid-template-columns: 1fr;
+  }
+
+  .courses-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .value-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Project cards fluidos */
+.project-card {
+  height: auto;
+  min-height: 360px;
+}
+
+.project-front,
+.project-back {
+  position: relative;
+  height: auto;
+  min-height: 360px;
+}
+
+/* Timeline ajuste */
+.timeline-item {
+  width: 100%;
+}
+
+/* Navbar não estoura */
+.navbar {
+  left: 0;
+  right: 0;
+}
+
+/* Evita textos largos */
+.hero-subtitle,
+.section-subtitle {
+  width: 100%;
+}
+
+/* CTA quebra certo */
+.cta-buttons {
+  justify-content: flex-start;
+}
+
+@media (max-width: 768px) {
+  .cta-buttons {
+    justify-content: center;
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-subtitle {
+    text-align: center;
+  }
+}
+
+/* Cards nunca passam da tela */
+.value-card,
+.skill-category,
+.course-card,
+.contact-item,
+.timeline-content,
+.project-front,
+.project-back {
+  width: 100%;
+}
+
+/* Remove transform que causa overflow visual */
+.value-card:hover {
+  transform: translateY(-10px) rotateX(3deg);
+}
+
   </style>
 </head>
 <body>
